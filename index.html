@@ -1,0 +1,404 @@
+<!doctype html><html lang="fa" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b16"><meta name="description" content="YAZORA — 100 ابزار کاربردی">
+<link rel="manifest" href="manifest.json"><title>YAZORA — 100 Tools</title>
+<style>
+:root{--bg:#070a13;--card:#111827;--txt:#f8fafc;--muted:#94a3b8;--line:#ffffff12;--a:#7c5cff;--b:#00d9ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 0%,#7c5cff24,transparent 30%),radial-gradient(circle at 92% 8%,#00d9ff18,transparent 25%),var(--bg);color:var(--txt);font-family:system-ui,Tahoma,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 28px));margin:auto}
+.top{position:sticky;top:0;z-index:20;background:#070a13cc;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:68px;display:flex;justify-content:space-between;align-items:center}.brand{display:flex;gap:10px;align-items:center;font-weight:900;font-size:20px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 10px 35px #7c5cff55}.actions{display:flex;gap:8px}.ico{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:var(--card);color:var(--txt)}
+.hero{text-align:center;padding:50px 0 25px}.pill{border:1px solid var(--line);background:#ffffff08;border-radius:999px;padding:8px 13px;color:#c9c2ff;font-size:13px}.hero h1{font-size:clamp(46px,11vw,86px);letter-spacing:-5px;line-height:.9;margin:20px 0 14px}.grad{background:linear-gradient(90deg,#fff,#b9adff,#68eaff);color:transparent;background-clip:text;-webkit-background-clip:text}.hero p{color:var(--muted);max-width:680px;margin:0 auto 25px}.search{position:relative;max-width:720px;margin:auto}.search input{width:100%;padding:17px 50px 17px 18px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--txt);outline:0;box-shadow:0 20px 60px #0005}.search b{position:absolute;right:18px;top:50%;transform:translateY(-50%)}
+.row{display:flex;justify-content:space-between;align-items:center;margin:25px 0 12px}.row h2{margin:0;font-size:23px}.muted{color:var(--muted);font-size:13px}.chips{display:flex;gap:8px;overflow:auto;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:#cbd5e1;border-radius:999px;padding:9px 13px}.chip.active,.chip:hover{background:linear-gradient(135deg,#7c5cff44,#00d9ff22);border-color:#7c5cff66;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{border:1px solid var(--line);background:linear-gradient(180deg,#151d2eee,#0f1522ee);border-radius:20px;padding:16px;min-height:175px;transition:.22s;position:relative}.card:hover{transform:translateY(-5px);border-color:#7c5cff66;box-shadow:0 20px 50px #0005}.tl{display:flex;justify-content:space-between}.ti{width:48px;height:48px;border-radius:15px;background:#ffffff0a;display:grid;place-items:center;font-size:23px}.fav{background:none;border:0;color:#718096;font-size:21px}.fav.on{color:#ffd34d}.card h3{margin:14px 0 5px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:12px;min-height:34px}.open{display:inline-block;margin-top:13px;color:#cfc7ff;font-size:13px}.empty{display:none;text-align:center;border:1px dashed var(--line);border-radius:18px;padding:45px;color:var(--muted)}
+footer{margin-top:50px;padding:30px 0 45px;text-align:center;color:var(--muted);border-top:1px solid var(--line)}footer strong{color:#fff}
+.modal{position:fixed;inset:0;background:#0009;backdrop-filter:blur(8px);z-index:50;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal.show{display:flex}.sheet{width:min(720px,100%);max-height:90vh;overflow:auto;background:#101827;border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:0 30px 100px #0009}.head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#ffffff0a;color:#fff;border-radius:12px;width:40px;height:40px}.form{display:grid;gap:10px;margin-top:15px}.field{display:grid;gap:6px}.field label{font-size:13px;color:#cbd5e1}.field input,.field textarea,.field select{width:100%;padding:13px;border:1px solid var(--line);border-radius:13px;background:#0b1220;color:#fff;outline:0}.field textarea{min-height:130px}.btn{border:0;border-radius:13px;padding:13px 16px;background:linear-gradient(135deg,var(--a),#5c45db);color:#fff;font-weight:700}.result{margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#ffffff06;white-space:pre-wrap;word-break:break-word}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.big{font-size:52px;text-align:center;margin:20px;font-variant-numeric:tabular-nums}
+.light{--bg:#f3f6fb;--card:#fff;--txt:#111827;--muted:#64748b;--line:#0f172a14}.light .top{background:#f3f6fbd9}.light .sheet{background:#fff}.light .field input,.light .field textarea{background:#f8fafc;color:#111827}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr);gap:9px}.card{min-height:160px;padding:14px}.hero{padding-top:40px}}@media(max-width:400px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+</style>
+<style>
+.lang-select{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:12px;padding:9px 10px;font:inherit;max-width:130px;outline:none}
+[dir="rtl"] .lang-select{direction:rtl}
+@media(max-width:520px){.lang-select{max-width:92px;padding:8px 5px;font-size:12px}}
+</style>
+
+<style id="yazora-premium-style">
+:root{
+  --y-glow: rgba(99,102,241,.22);
+  --y-glow2: rgba(168,85,247,.16);
+  --y-radius: 20px;
+}
+body{
+  background:
+    radial-gradient(900px 500px at 8% -10%, var(--y-glow), transparent 60%),
+    radial-gradient(800px 450px at 100% 5%, var(--y-glow2), transparent 58%),
+    var(--bg);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.32;
+  background-image:radial-gradient(circle at 1px 1px,currentColor 1px,transparent 0);
+  background-size:28px 28px;color:rgba(120,120,160,.09);
+  mask-image:linear-gradient(to bottom,black,transparent 72%);
+}
+header,.topbar,.navbar{
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+}
+.card,.tool-card,.category,.modal,.sheet,.search-box{
+  border-radius:var(--y-radius)!important;
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease,background .24s ease;
+}
+.card:hover,.tool-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 45px rgba(0,0,0,.12),0 0 0 1px rgba(124,58,237,.10);
+}
+button,.icon-btn,.chip,.category{
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+button:active,.icon-btn:active,.chip:active,.category:active{transform:scale(.96)}
+.hero{
+  position:relative;
+  isolation:isolate;
+}
+.hero:after{
+  content:"";position:absolute;width:240px;height:240px;border-radius:50%;
+  right:-80px;top:-80px;background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(168,85,247,.04));
+  filter:blur(10px);z-index:-1;animation:yfloat 7s ease-in-out infinite;
+}
+@keyframes yfloat{50%{transform:translate(-20px,18px) scale(1.08)}}
+.yazora-reveal{animation:yreveal .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes yreveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tool-card,.card{animation:ycard .55s both}
+@keyframes ycard{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.lang-select{
+  appearance:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--card),rgba(124,58,237,.06));
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+#yazoraToast{
+ position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
+ opacity:0;pointer-events:none;z-index:9999;
+ padding:11px 16px;border-radius:14px;
+ background:rgba(20,20,28,.92);color:white;
+ box-shadow:0 14px 40px rgba(0,0,0,.24);
+ font-size:13px;backdrop-filter:blur(12px);
+ transition:.28s ease;
+}
+#yazoraToast.show{opacity:1;transform:translate(-50%,0)}
+#yazoraCommand{
+ position:fixed;inset:0;background:rgba(5,7,15,.56);backdrop-filter:blur(12px);
+ display:none;align-items:flex-start;justify-content:center;padding:11vh 16px;z-index:10000;
+}
+#yazoraCommand.open{display:flex}
+.y-command-box{
+ width:min(680px,100%);border:1px solid rgba(255,255,255,.12);
+ background:var(--card);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.35);overflow:hidden;
+}
+.y-command-input{width:100%;box-sizing:border-box;border:0;border-bottom:1px solid var(--border);
+ background:transparent;color:var(--text);padding:18px 20px;font-size:17px;outline:none}
+.y-command-help{padding:14px 20px;color:var(--muted);font-size:12px}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+
+<style id="yazora-v2-style">
+:root{
+ --y-bg:#f5f7ff;--y-card:rgba(255,255,255,.82);--y-text:#15162b;--y-muted:#686b85;
+ --y-border:rgba(99,102,241,.14);--y-primary:#635bff;--y-secondary:#a855f7;
+ --y-shadow:0 12px 38px rgba(52,45,120,.10);
+}
+body{background:
+ radial-gradient(900px 520px at -10% -10%,rgba(99,91,255,.18),transparent 62%),
+ radial-gradient(760px 480px at 110% 5%,rgba(168,85,247,.14),transparent 60%),
+ linear-gradient(180deg,#f8f9ff 0%,#f2f4fb 100%)!important;color:var(--y-text)}
+.dark body,body.dark{background:
+ radial-gradient(900px 520px at -10% -10%,rgba(99,91,255,.20),transparent 62%),
+ radial-gradient(760px 480px at 110% 5%,rgba(168,85,247,.16),transparent 60%),
+ #0c0d18!important}
+.tool-grid,.tools-grid,#toolsGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+.tool-card,.card{background:var(--y-card)!important;border:1px solid var(--y-border)!important;box-shadow:var(--y-shadow)!important}
+.tool-card:hover,.card:hover{transform:translateY(-4px) scale(1.005)!important;box-shadow:0 20px 50px rgba(65,55,150,.15)!important}
+@media(max-width:520px){.tool-grid,.tools-grid,#toolsGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
+@media(max-width:360px){.tool-grid,.tools-grid,#toolsGrid{grid-template-columns:1fr!important}}
+.y-kbd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.y-kbd button{min-height:48px;border:1px solid var(--y-border);border-radius:13px;background:rgba(99,91,255,.07);color:var(--y-text);font-size:18px;font-weight:700}
+.y-kbd button:active{transform:scale(.94);background:rgba(99,91,255,.16)}
+.y-kbd .wide{grid-column:span 2}.y-kbd .accent{background:linear-gradient(135deg,var(--y-primary),var(--y-secondary));color:#fff;border:0}
+.y-tool-input{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:14px;border:1px solid var(--y-border);background:rgba(255,255,255,.65);color:var(--y-text);outline:none;font-size:16px}
+.dark .y-tool-input{background:rgba(20,21,35,.72)}
+.y-result{margin-top:12px;padding:13px 14px;border-radius:14px;background:rgba(99,91,255,.07);border:1px solid var(--y-border);line-height:1.8;word-break:break-word}
+.y-tool-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.y-tool-actions button{border:0;border-radius:12px;padding:10px 13px;cursor:pointer;background:linear-gradient(135deg,var(--y-primary),var(--y-secondary));color:white;font-weight:700}
+.y-tool-actions button.secondary{background:rgba(99,91,255,.08);color:var(--y-text);border:1px solid var(--y-border)}
+</style>
+</head><body>
+<div id="yazoraToast"></div>
+<div id="yazoraCommand" aria-hidden="true">
+  <div class="y-command-box">
+    <input id="yCommandInput" class="y-command-input" placeholder="جستجو در YAZORA...  (Ctrl + K)" autocomplete="off">
+    <div class="y-command-help">Enter برای جستجو • Esc برای بستن</div>
+  </div>
+</div>
+
+<header class="top"><div class="wrap nav"><div class="brand"><div class="logo">Y</div>YAZORA</div><div class="actions"><button class="ico" id="theme">☀️</button></div></div></header>
+<main class="wrap"><section class="hero"><span class="pill">⚡ 100 ابزار واقعی و کاربردی</span><h1><span class="grad">YAZORA</span></h1><p>جعبه‌ابزار مدرن برای مطالعه، محاسبات، متن، تکنولوژی و کارهای روزمره.</p><div class="search"><b>🔍</b><input id="search" placeholder="جستجو بین ۱۰۰ ابزار..."></div></section>
+<div class="row"><h2>دسته‌بندی‌ها</h2><span class="muted" id="count"></span></div><div class="chips" id="chips"></div>
+<div class="row"><h2>همه ابزارها</h2><span class="muted">روی هر کارت بزن</span></div><div class="grid" id="grid"></div><div class="empty" id="empty">چیزی پیدا نشد.</div></main>
+<footer>
+  <div>ساخته شده با ❤️ توسط <strong>YAZDAN</strong></div>
+  <div style="margin-top:8px">پشتیبانی تلگرام: <strong dir="ltr">@Yazdangpt1</strong></div>
+  <div style="margin-top:8px;font-size:13px">تاریخ انتشار: <strong>۱ مهر ۱۴۰۵</strong></div>
+</footer>
+<div class="modal" id="modal"><div class="sheet"><div class="head"><h2 id="mtitle"></h2><button class="close" id="close">✕</button></div><div id="body"></div></div></div>
+<script>
+const tools=[["ماشین حساب", "🧮", "محاسبات", "محاسبات معمولی", "calc"], ["درصد", "📊", "محاسبات", "درصد یک عدد", "percent"], ["معدل", "🎓", "مطالعه", "محاسبه معدل چند درس", "average"], ["BMI", "⚖️", "محاسبات", "محاسبه شاخص توده بدنی", "bmi"], ["تبدیل واحد", "🔄", "محاسبات", "تبدیل واحدهای رایج", "unit"], ["تبدیل دما", "🌡️", "محاسبات", "سانتی‌گراد، فارنهایت و کلوین", "temp"], ["تبدیل طول", "📏", "محاسبات", "متر، کیلومتر، مایل و بیشتر", "length"], ["تبدیل وزن", "⚖️", "محاسبات", "گرم، کیلوگرم، پوند و بیشتر", "weight"], ["تبدیل حجم", "🧪", "محاسبات", "لیتر، میلی‌لیتر و بیشتر", "volume"], ["تبدیل سرعت", "🚀", "محاسبات", "km/h و mph", "speed"], ["تبدیل داده", "💾", "تکنولوژی", "B، KB، MB، GB و بیشتر", "data"], ["ماشین حساب زمان", "⏱️", "زمان", "جمع و تفریق زمان", "timecalc"], ["کرنومتر", "⏱️", "زمان", "زمان‌سنج دقیق", "stopwatch"], ["تایمر", "⏲️", "زمان", "تایمر شمارش معکوس", "timer"], ["پومودورو", "🍅", "مطالعه", "تمرکز و استراحت", "pomodoro"], ["شمارش کلمات", "🔢", "متن", "شمارش کلمات", "wordcount"], ["شمارش حروف", "🔤", "متن", "شمارش کاراکترها", "charcount"], ["حروف بزرگ", "🔠", "متن", "تبدیل متن به حروف بزرگ", "upper"], ["حروف کوچک", "🔡", "متن", "تبدیل متن به حروف کوچک", "lower"], ["عنوان‌بندی متن", "Aa", "متن", "تبدیل متن به حالت عنوان", "titlecase"], ["حذف فاصله اضافی", "🧹", "متن", "تمیز کردن فاصله‌های اضافی", "spaces"], ["خط‌به‌خط", "↕️", "متن", "مرتب‌سازی خطوط متن", "linesort"], ["برعکس کردن متن", "🔁", "متن", "معکوس کردن متن", "reverse"], ["تکرار متن", "✖️", "متن", "تکرار متن چند بار", "repeat"], ["رمز عبور", "🔐", "تکنولوژی", "تولید رمز تصادفی", "password"], ["UUID", "🆔", "تکنولوژی", "تولید شناسه تصادفی", "uuid"], ["Base64", "🔣", "تکنولوژی", "Encode و Decode", "base64"], ["URL Encoder", "🔗", "تکنولوژی", "Encode و Decode آدرس", "url"], ["JSON Formatter", "{}", "تکنولوژی", "مرتب‌سازی JSON", "json"], ["JSON Minifier", "{}", "تکنولوژی", "کم‌حجم کردن JSON", "jsonmin"], ["HEX ↔ RGB", "🌈", "تصویر", "تبدیل فرمت رنگ", "color"], ["انتخاب رنگ", "🎨", "تصویر", "انتخاب و نمایش رنگ", "picker"], ["پالت رنگ", "🎨", "تصویر", "ساخت پالت رنگ", "palette"], ["تاس", "🎲", "روزمره", "پرتاب تاس", "dice"], ["انتخاب تصادفی", "🎯", "روزمره", "انتخاب از فهرست", "random"], ["سکه", "🪙", "روزمره", "شیر یا خط", "coin"], ["عدد تصادفی", "🔢", "روزمره", "عدد تصادفی در بازه", "randnum"], ["یادداشت سریع", "📝", "بهره‌وری", "یادداشت ذخیره‌شونده", "notes"], ["لیست کارها", "✅", "بهره‌وری", "مدیریت کارهای روزانه", "todo"], ["تبدیل تاریخ", "📅", "زمان", "تبدیل و نمایش تاریخ", "date"], ["محاسبه سن", "🎂", "زمان", "محاسبه سن", "age"], ["شمارش معکوس تاریخ", "⌛", "زمان", "زمان باقی‌مانده تا تاریخ", "countdown"], ["روز هفته", "📆", "زمان", "یافتن روز هفته", "weekday"], ["اختلاف تاریخ", "📅", "زمان", "تعداد روز بین دو تاریخ", "datediff"], ["تعداد روز سال", "🗓️", "زمان", "روز سپری‌شده سال", "dayofyear"], ["تست سرعت تایپ", "⌨️", "مطالعه", "سنجش سرعت تایپ", "typing"], ["تایمر مطالعه", "📚", "مطالعه", "تایمر مطالعه ساده", "studytimer"], ["فلش‌کارت", "🧠", "مطالعه", "فلش‌کارت ساده", "flashcards"], ["یادآور مطالعه", "🔔", "مطالعه", "یادآوری مرور", "reminder"], ["تعداد حروف بدون فاصله", "🔤", "متن", "شمارش حروف واقعی", "letters"], ["جمله‌شمار", "💬", "متن", "شمارش جمله‌ها", "sentences"], ["پاراگراف‌شمار", "📄", "متن", "شمارش پاراگراف‌ها", "paragraphs"], ["کلمه‌ساز", "🔤", "متن", "ساخت کلمات تصادفی", "wordgen"], ["پاکسازی خطوط", "🧽", "متن", "حذف خطوط خالی", "cleanlines"], ["مرتب‌سازی متن", "↕️", "متن", "مرتب‌سازی الفبایی", "sorttext"], ["حذف تکراری‌ها", "♻️", "متن", "حذف خطوط تکراری", "unique"], ["مقایسه متن", "🆚", "متن", "مقایسه دو متن", "diff"], ["HTML Escape", "🌐", "تکنولوژی", "Escape متن HTML", "htmlescape"], ["HTML Unescape", "🌐", "تکنولوژی", "برگرداندن HTML Escape", "htmlunescape"], ["کد Morse", "📡", "تکنولوژی", "متن ↔ Morse", "morse"], ["Binary", "💻", "تکنولوژی", "متن ↔ باینری", "binary"], ["ASCII", "🔤", "تکنولوژی", "تبدیل متن و ASCII", "ascii"], ["Timestamp", "🕐", "تکنولوژی", "Unix timestamp", "timestamp"], ["Regex Tester", "🧪", "تکنولوژی", "آزمایش عبارت منظم", "regex"], ["SHA-256", "🔒", "تکنولوژی", "هش متن در مرورگر", "sha"], ["دامنه ایمیل", "📧", "تکنولوژی", "استخراج دامنه ایمیل", "emaildomain"], ["URL Parser", "🔗", "تکنولوژی", "تحلیل URL", "urlparse"], ["Query Builder", "🔎", "تکنولوژی", "ساخت Query URL", "query"], ["QR Code", "▦", "تکنولوژی", "ساخت QR از متن", "qr"], ["Meta Text", "🏷️", "تکنولوژی", "ساخت متادیتای ساده", "meta"], ["تبدیل CSV", "📑", "تکنولوژی", "CSV به JSON ساده", "csv"], ["JSON به CSV", "📑", "تکنولوژی", "JSON به CSV", "jsoncsv"], ["Markdown Preview", "📝", "تکنولوژی", "نمایش ساده Markdown", "markdown"], ["HTML Preview", "🌐", "تکنولوژی", "پیش‌نمایش HTML", "htmlpreview"], ["تبدیل RGB", "🌈", "تصویر", "RGB به HEX", "rgb"], ["کنتراست رنگ", "◐", "تصویر", "بررسی کنتراست دو رنگ", "contrast"], ["گرادیانت ساز", "🌈", "تصویر", "ساخت CSS Gradient", "gradient"], ["CSS Shadow", "✨", "تصویر", "ساخت box-shadow", "shadow"], ["CSS Radius", "◼️", "تصویر", "ساخت border-radius", "radius"], ["CSS Button", "🔘", "تصویر", "ساخت استایل دکمه", "buttoncss"], ["رزولوشن تصویر", "🖼️", "تصویر", "محاسبه نسبت تصویر", "aspect"], ["نسبت تصویر", "📐", "تصویر", "محاسبه نسبت و ابعاد", "ratio"], ["تبدیل واحد زاویه", "📐", "محاسبات", "درجه و رادیان", "angle"], ["توان و ریشه", "√", "محاسبات", "محاسبه توان و ریشه", "power"], ["فاکتوریل", "!", "محاسبات", "فاکتوریل عدد", "factorial"], ["اعداد اول", "🔢", "محاسبات", "تشخیص عدد اول", "prime"], ["GCD / LCM", "➗", "محاسبات", "ب.م.م و ک.م.م", "gcd"], ["میانگین", "📈", "محاسبات", "میانگین اعداد", "mean"], ["میانه", "📊", "محاسبات", "میانه اعداد", "median"], ["حالت آماری", "📊", "محاسبات", "Mode اعداد", "mode"], ["تبدیل کسر", "½", "محاسبات", "کسر به اعشاری", "fraction"], ["رُند کردن", "≈", "محاسبات", "رُند کردن عدد", "round"], ["اعداد رومی", "🏛️", "محاسبات", "عدد ↔ رومی", "roman"], ["تبدیل مبنا", "01", "تکنولوژی", "Binary/Hex/Decimal", "base"], ["نمودار ساده", "📈", "بهره‌وری", "نمایش داده‌ها", "chart"], ["ماتریس ساده", "🔢", "محاسبات", "جمع دو ماتریس 2×2", "matrix"], ["کالری تقریبی", "🔥", "روزمره", "محاسبه تقریبی کالری فعالیت", "calories"], ["شاخص سرعت", "⚡", "روزمره", "سرعت متوسط مسیر", "avgspeed"], ["تقسیم هزینه", "💳", "روزمره", "تقسیم مبلغ بین افراد", "split"], ["انعام", "💵", "روزمره", "محاسبه انعام", "tip"]];
+const cats=["همه","محاسبات","مطالعه","متن","زمان","تکنولوژی","تصویر","بهره‌وری","روزمره"];
+let cat="همه",fav=JSON.parse(localStorage.getItem("yzfav")||"[]");
+const $=s=>document.querySelector(s);
+function chips(){let c=$("#chips");c.innerHTML=cats.map(x=>`<button class="chip ${x==cat?"active":""}">${x}</button>`).join("");[...c.children].forEach(b=>b.onclick=()=>{cat=b.textContent;chips();render()})}
+function render(){let q=$("#search").value.trim().toLowerCase(),a=tools.map((t,i)=>[t,i]).filter(([t])=>(cat=="همه"||t[2]==cat)&&(!q||t.join(" ").toLowerCase().includes(q)));$("#count").textContent=a.length+" ابزار";$("#empty").style.display=a.length?"none":"block";$("#grid").innerHTML=a.map(([t,i])=>`<article class="card" data-i="${i}"><div class="tl"><div class="ti">${t[1]}</div><button class="fav ${fav.includes(i)?"on":""}">${fav.includes(i)?"★":"☆"}</button></div><h3>${t[0]}</h3><p>${t[3]}</p><span class="open">باز کردن →</span></article>`).join("");[...$("#grid").children].forEach(c=>c.onclick=e=>{let i=+c.dataset.i;if(e.target.classList.contains("fav")){fav=fav.includes(i)?fav.filter(x=>x!=i):[...fav,i];localStorage.setItem("yzfav",JSON.stringify(fav));render()}else openTool(i)})}
+$("#search").oninput=render;$("#theme").onclick=()=>{document.body.classList.toggle("light");localStorage.setItem("yzt",document.body.classList.contains("light")?"1":"0")};if(localStorage.getItem("yzt")=="1")document.body.classList.add("light");
+$("#close").onclick=()=>$("#modal").classList.remove("show");$("#modal").onclick=e=>{if(e.target.id=="modal")$("#modal").classList.remove("show")};
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function f(id,label,val=""){return `<div class="field"><label>${label}</label><input id="${id}" value="${esc(val)}"></div>`}
+function out(){return `<div class="result" id="result"></div>`}
+function openTool(i){let t=tools[i],type=t[4],b="";
+if(["stopwatch","timer","pomodoro","studytimer"].includes(type))b=`<div class="big" id="clock">00:00</div><div class="two"><button class="btn" onclick="timer('${type}')">شروع</button><button class="btn" onclick="stop()">توقف</button></div>`;
+else if(type=="calc")b=`<div class="form">${f("x","عبارت ریاضی","(12+8)*3/2")}<button class="btn" onclick="run('calc')">محاسبه</button>${out()}</div>`;
+else if(type=="percent")b=`<div class="two">${f("a","عدد","250")}${f("p","درصد","15")}</div><button class="btn" onclick="run('percent')">محاسبه</button>${out()}`;
+else if(type=="average"||type=="mean"||type=="median"||type=="mode")b=`<div class="form">${f("x","اعداد با فاصله یا ویرگول","10,20,20,30")}<button class="btn" onclick="run('${type}')">محاسبه</button>${out()}</div>`;
+else if(type=="bmi")b=`<div class="two">${f("w","وزن kg","70")}${f("h","قد cm","175")}</div><button class="btn" onclick="run('bmi')">محاسبه BMI</button>${out()}`;
+else if(["upper","lower","spaces","reverse","wordcount","charcount","letters","sentences","paragraphs","cleanlines","unique","sorttext","titlecase"].includes(type))b=`<div class="form"><div class="field"><label>متن</label><textarea id="x"></textarea></div><button class="btn" onclick="run('${type}')">اجرا</button>${out()}</div>`;
+else if(type=="password")b=`${f("n","طول رمز","16")}<button class="btn" onclick="run('password')">تولید رمز</button>${out()}`;
+else if(type=="uuid")b=`<button class="btn" onclick="run('uuid')">تولید UUID</button>${out()}`;
+else if(type=="base64"||type=="url")b=`<div class="field"><textarea id="x"></textarea></div><div class="two"><button class="btn" onclick="run('${type}e')">Encode</button><button class="btn" onclick="run('${type}d')">Decode</button></div>${out()}`;
+else if(type=="json"||type=="jsonmin")b=`<textarea id="x" style="width:100%;min-height:180px" placeholder='{"name":"YAZORA"}'></textarea><button class="btn" onclick="run('${type}')">اجرا</button>${out()}`;
+else if(type=="dice")b=`<button class="btn" onclick="run('dice')">پرتاب تاس 🎲</button>${out()}`;
+else if(type=="coin")b=`<button class="btn" onclick="run('coin')">پرتاب سکه 🪙</button>${out()}`;
+else if(type=="random")b=`<textarea id="x" placeholder="هر گزینه در یک خط"></textarea><button class="btn" onclick="run('random')">انتخاب</button>${out()}`;
+else if(type=="notes")b=`<textarea id="x">${esc(localStorage.getItem("yznote")||"")}</textarea><button class="btn" onclick="run('notes')">ذخیره</button>${out()}`;
+else if(type=="age")b=`${f("x","تاریخ تولد","2008-01-01")}<button class="btn" onclick="run('age')">محاسبه سن</button>${out()}`;
+else if(type=="datediff")b=`<div class="two">${f("a","تاریخ اول","2026-01-01")}${f("b","تاریخ دوم","2026-10-01")}</div><button class="btn" onclick="run('datediff')">محاسبه</button>${out()}`;
+else if(type=="power")b=`<div class="two">${f("a","عدد","2")}${f("b","توان","8")}</div><button class="btn" onclick="run('power')">محاسبه</button>${out()}`;
+else if(type=="factorial"||type=="prime"||type=="round")b=`${f("x","عدد","12")}<button class="btn" onclick="run('${type}')">اجرا</button>${out()}`;
+else if(type=="color"||type=="picker")b=`${f("x","HEX","7c5cff")}<button class="btn" onclick="run('color')">تبدیل</button>${out()}`;
+else if(type=="split"||type=="tip")b=`<div class="two">${f("a","مبلغ","100000")}${f("b",type=="split"?"تعداد افراد":"درصد انعام",type=="split"?"4":"15")}</div><button class="btn" onclick="run('${type}')">محاسبه</button>${out()}`;
+else b=`<div class="form">${f("x","ورودی","YAZORA")}<button class="btn" onclick="run('generic')">اجرا</button>${out()}</div>`;
+$("#mtitle").textContent=t[1]+" "+t[0];$("#body").innerHTML=b;$("#modal").classList.add("show")}
+let iv;function stop(){clearInterval(iv)}function timer(type){stop();let s=type=="stopwatch"?0:1500;let e=$("#clock");iv=setInterval(()=>{let m=Math.floor(s/60),x=s%60;e.textContent=String(m).padStart(2,"0")+":"+String(x).padStart(2,"0");s+=type=="stopwatch"?1:-1;if(s<0){stop();alert("زمان تمام شد!")}},1000)}
+function nums(){return ($("#x")?.value||"").split(/[,\\s]+/).map(Number).filter(Number.isFinite)}
+function run(t){let r=$("#result"),v="";try{
+if(t=="calc")v=Function("return "+$("#x").value)();
+else if(t=="percent")v=+$("#a").value*+$("#p").value/100;
+else if(t=="average"||t=="mean"){let a=nums();v=a.reduce((x,y)=>x+y,0)/a.length}
+else if(t=="median"){let a=nums().sort((a,b)=>a-b),m=Math.floor(a.length/2);v=a.length%2?a[m]:(a[m-1]+a[m])/2}
+else if(t=="mode"){let a=nums(),m={};a.forEach(x=>m[x]=(m[x]||0)+1);v=Object.entries(m).sort((a,b)=>b[1]-a[1])[0]?.[0]}
+else if(t=="bmi")v=(+$("#w").value/(+$("#h").value/100)**2).toFixed(2);
+else if(t=="upper")v=$("#x").value.toUpperCase();else if(t=="lower")v=$("#x").value.toLowerCase();else if(t=="spaces")v=$("#x").value.replace(/\\s+/g," ").trim();else if(t=="reverse")v=[...$("#x").value].reverse().join("");
+else if(t=="wordcount")v="کلمات: "+($("#x").value.trim()?$("#x").value.trim().split(/\\s+/).length:0);else if(t=="charcount")v="کاراکترها: "+$("#x").value.length;
+else if(t=="letters")v="حروف: "+($("#x").value.match(/[\\p{L}]/gu)||[]).length;else if(t=="sentences")v="جمله‌ها: "+($("#x").value.match(/[.!؟?]+/g)||[]).length;else if(t=="paragraphs")v="پاراگراف‌ها: "+$("#x").value.split(/\\n\\s*\\n/).filter(x=>x.trim()).length;
+else if(t=="cleanlines")v=$("#x").value.split("\\n").filter(x=>x.trim()).join("\\n");else if(t=="unique")v=[...new Set($("#x").value.split("\\n"))].join("\\n");else if(t=="sorttext")v=$("#x").value.split("\\n").sort((a,b)=>a.localeCompare(b)).join("\\n");else if(t=="titlecase")v=$("#x").value.replace(/\\b\\w/g,c=>c.toUpperCase());
+else if(t=="password"){let c="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%",n=+$("#n").value;v=Array.from({length:n},()=>c[Math.floor(Math.random()*c.length)]).join("")}
+else if(t=="uuid")v=crypto.randomUUID();else if(t=="base64e")v=btoa(unescape(encodeURIComponent($("#x").value)));else if(t=="base64d")v=decodeURIComponent(escape(atob($("#x").value)));else if(t=="urle")v=encodeURIComponent($("#x").value);else if(t=="urld")v=decodeURIComponent($("#x").value);
+else if(t=="json")v=JSON.stringify(JSON.parse($("#x").value),null,2);else if(t=="jsonmin")v=JSON.stringify(JSON.parse($("#x").value));else if(t=="dice")v="🎲 "+(1+Math.floor(Math.random()*6));else if(t=="coin")v=Math.random()<.5?"شیر":"خط";
+else if(t=="random"){let a=$("#x").value.split("\\n").filter(x=>x.trim());v=a[Math.floor(Math.random()*a.length)]||"لیست خالی است"}else if(t=="notes"){localStorage.setItem("yznote",$("#x").value);v="ذخیره شد ✅"}else if(t=="age"){let d=new Date($("#x").value),n=new Date(),a=n.getFullYear()-d.getFullYear();if(n<new Date(n.getFullYear(),d.getMonth(),d.getDate()))a--;v=a+" سال"}
+else if(t=="datediff")v=Math.abs(new Date($("#a").value)-new Date($("#b").value))/86400000+" روز";else if(t=="power")v=Math.pow(+$("#a").value,+$("#b").value);else if(t=="factorial"){let n=+$("#x").value,a=1;for(let i=2;i<=n;i++)a*=i;v=a}
+else if(t=="prime"){let n=+$("#x").value,p=n>1;for(let i=2;i*i<=n;i++)if(n%i==0)p=false;v=p?"عدد اول است":"عدد اول نیست"}else if(t=="round")v=Math.round(+$("#x").value);
+else if(t=="color"){let h=$("#x").value.replace("#","");let n=parseInt(h,16);v=`HEX: #${h}\\nRGB: ${n>>16&255}, ${n>>8&255}, ${n&255}`}
+else if(t=="split")v=(+$("#a").value/+$("#b").value).toFixed(2)+" برای هر نفر";else if(t=="tip")v=(+$("#a").value*(1+ +$("#b").value/100)).toFixed(2);
+else v="ورودی ثبت شد. این ابزار در نسخه پایه آماده توسعه است.";
+r.textContent=v}catch(e){r.textContent="ورودی نامعتبر است: "+e.message}}
+chips();render();
+</script>
+<script>
+const YAZORA_LANGS = {
+fa:{name:"فارسی",dir:"rtl",title:"YAZORA — ابزارهای روزمره شما، همه در یک جا",search:"جستجوی ابزار...",popular:"محبوب‌ها",categories:"دسته‌بندی‌ها",all:"همه",tools:"ابزارها",support:"پشتیبانی تلگرام",created:"ساخته شده با ❤️ توسط YAZDAN",published:"تاریخ انتشار"},
+en:{name:"English",dir:"ltr",title:"YAZORA — Your everyday tools, all in one place",search:"Search tools...",popular:"Popular",categories:"Categories",all:"All",tools:"Tools",support:"Telegram support",created:"Made with ❤️ by YAZDAN",published:"Publication date"},
+ar:{name:"العربية",dir:"rtl",title:"YAZORA — أدواتك اليومية في مكان واحد",search:"ابحث عن أداة...",popular:"الأكثر استخداماً",categories:"التصنيفات",all:"الكل",tools:"الأدوات",support:"دعم تيليجرام",created:"صُنع بـ ❤️ بواسطة YAZDAN",published:"تاريخ النشر"},
+tr:{name:"Türkçe",dir:"ltr",title:"YAZORA — Günlük araçlarınız tek yerde",search:"Araçlarda ara...",popular:"Popüler",categories:"Kategoriler",all:"Tümü",tools:"Araçlar",support:"Telegram desteği",created:"❤️ ile YAZDAN tarafından yapıldı",published:"Yayın tarihi"},
+de:{name:"Deutsch",dir:"ltr",title:"YAZORA — Deine täglichen Tools an einem Ort",search:"Tools durchsuchen...",popular:"Beliebt",categories:"Kategorien",all:"Alle",tools:"Tools",support:"Telegram-Support",created:"Mit ❤️ von YAZDAN erstellt",published:"Veröffentlichungsdatum"},
+fr:{name:"Français",dir:"ltr",title:"YAZORA — Vos outils du quotidien au même endroit",search:"Rechercher un outil...",popular:"Populaires",categories:"Catégories",all:"Tous",tools:"Outils",support:"Assistance Telegram",created:"Créé avec ❤️ par YAZDAN",published:"Date de publication"},
+es:{name:"Español",dir:"ltr",title:"YAZORA — Tus herramientas diarias en un solo lugar",search:"Buscar herramientas...",popular:"Populares",categories:"Categorías",all:"Todas",tools:"Herramientas",support:"Soporte de Telegram",created:"Hecho con ❤️ por YAZDAN",published:"Fecha de publicación"},
+it:{name:"Italiano",dir:"ltr",title:"YAZORA — I tuoi strumenti quotidiani in un unico posto",search:"Cerca strumenti...",popular:"Popolari",categories:"Categorie",all:"Tutti",tools:"Strumenti",support:"Supporto Telegram",created:"Creato con ❤️ da YAZDAN",published:"Data di pubblicazione"},
+pt:{name:"Português",dir:"ltr",title:"YAZORA — Suas ferramentas diárias em um só lugar",search:"Pesquisar ferramentas...",popular:"Populares",categories:"Categorias",all:"Todas",tools:"Ferramentas",support:"Suporte Telegram",created:"Feito com ❤️ por YAZDAN",published:"Data de publicação"},
+ru:{name:"Русский",dir:"ltr",title:"YAZORA — Все повседневные инструменты в одном месте",search:"Поиск инструментов...",popular:"Популярное",categories:"Категории",all:"Все",tools:"Инструменты",support:"Поддержка Telegram",created:"Сделано с ❤️ YAZDAN",published:"Дата публикации"},
+zh:{name:"中文",dir:"ltr",title:"YAZORA — 日常工具，一站式使用",search:"搜索工具...",popular:"热门",categories:"分类",all:"全部",tools:"工具",support:"Telegram 支持",created:"由 YAZDAN 用 ❤️ 制作",published:"发布日期"},
+ja:{name:"日本語",dir:"ltr",title:"YAZORA — 毎日のツールをひとつに",search:"ツールを検索...",popular:"人気",categories:"カテゴリー",all:"すべて",tools:"ツール",support:"Telegramサポート",created:"YAZDAN が ❤️ を込めて制作",published:"公開日"},
+ko:{name:"한국어",dir:"ltr",title:"YAZORA — 매일 필요한 도구를 한곳에서",search:"도구 검색...",popular:"인기",categories:"카테고리",all:"전체",tools:"도구",support:"Telegram 지원",created:"YAZDAN이 ❤️로 제작",published:"게시일"},
+hi:{name:"हिन्दी",dir:"ltr",title:"YAZORA — आपके रोज़मर्रा के टूल एक जगह",search:"टूल खोजें...",popular:"लोकप्रिय",categories:"श्रेणियाँ",all:"सभी",tools:"टूल",support:"Telegram सहायता",created:"YAZDAN द्वारा ❤️ से बनाया गया",published:"प्रकाशन तिथि"},
+ur:{name:"اردو",dir:"rtl",title:"YAZORA — آپ کے روزمرہ کے تمام ٹولز ایک جگہ",search:"ٹول تلاش کریں...",popular:"مقبول",categories:"زمرے",all:"سب",tools:"ٹولز",support:"ٹیلیگرام سپورٹ",created:"YAZDAN نے ❤️ سے بنایا",published:"اشاعت کی تاریخ"},
+id:{name:"Bahasa Indonesia",dir:"ltr",title:"YAZORA — Semua alat harian Anda di satu tempat",search:"Cari alat...",popular:"Populer",categories:"Kategori",all:"Semua",tools:"Alat",support:"Dukungan Telegram",created:"Dibuat dengan ❤️ oleh YAZDAN",published:"Tanggal publikasi"},
+ms:{name:"Bahasa Melayu",dir:"ltr",title:"YAZORA — Alat harian anda di satu tempat",search:"Cari alat...",popular:"Popular",categories:"Kategori",all:"Semua",tools:"Alat",support:"Sokongan Telegram",created:"Dihasilkan dengan ❤️ oleh YAZDAN",published:"Tarikh penerbitan"},
+nl:{name:"Nederlands",dir:"ltr",title:"YAZORA — Al je dagelijkse tools op één plek",search:"Tools zoeken...",popular:"Populair",categories:"Categorieën",all:"Alle",tools:"Tools",support:"Telegram-support",created:"Gemaakt met ❤️ door YAZDAN",published:"Publicatiedatum"},
+pl:{name:"Polski",dir:"ltr",title:"YAZORA — Wszystkie codzienne narzędzia w jednym miejscu",search:"Szukaj narzędzi...",popular:"Popularne",categories:"Kategorie",all:"Wszystkie",tools:"Narzędzia",support:"Wsparcie Telegram",created:"Stworzone z ❤️ przez YAZDAN",published:"Data publikacji"},
+uk:{name:"Українська",dir:"ltr",title:"YAZORA — Щоденні інструменти в одному місці",search:"Пошук інструментів...",popular:"Популярні",categories:"Категорії",all:"Усі",tools:"Інструменти",support:"Підтримка Telegram",created:"Створено з ❤️ YAZDAN",published:"Дата публікації"},
+vi:{name:"Tiếng Việt",dir:"ltr",title:"YAZORA — Công cụ hằng ngày của bạn ở một nơi",search:"Tìm công cụ...",popular:"Phổ biến",categories:"Danh mục",all:"Tất cả",tools:"Công cụ",support:"Hỗ trợ Telegram",created:"Được tạo bằng ❤️ bởi YAZDAN",published:"Ngày phát hành"},
+th:{name:"ไทย",dir:"ltr",title:"YAZORA — เครื่องมือประจำวันทั้งหมดในที่เดียว",search:"ค้นหาเครื่องมือ...",popular:"ยอดนิยม",categories:"หมวดหมู่",all:"ทั้งหมด",tools:"เครื่องมือ",support:"การสนับสนุน Telegram",created:"สร้างด้วย ❤️ โดย YAZDAN",published:"วันที่เผยแพร่"},
+sv:{name:"Svenska",dir:"ltr",title:"YAZORA — Dina vardagsverktyg på ett ställe",search:"Sök verktyg...",popular:"Populära",categories:"Kategorier",all:"Alla",tools:"Verktyg",support:"Telegram-support",created:"Skapad med ❤️ av YAZDAN",published:"Publiceringsdatum"},
+no:{name:"Norsk",dir:"ltr",title:"YAZORA — Dine hverdagsverktøy på ett sted",search:"Søk etter verktøy...",popular:"Populære",categories:"Kategorier",all:"Alle",tools:"Verktøy",support:"Telegram-støtte",created:"Laget med ❤️ av YAZDAN",published:"Publiseringsdato"},
+da:{name:"Dansk",dir:"ltr",title:"YAZORA — Dine hverdagsværktøjer samlet ét sted",search:"Søg efter værktøjer...",popular:"Populære",categories:"Kategorier",all:"Alle",tools:"Værktøjer",support:"Telegram-support",created:"Lavet med ❤️ af YAZDAN",published:"Udgivelsesdato"},
+fi:{name:"Suomi",dir:"ltr",title:"YAZORA — Päivittäiset työkalusi yhdessä paikassa",search:"Hae työkaluja...",popular:"Suositut",categories:"Kategoriat",all:"Kaikki",tools:"Työkalut",support:"Telegram-tuki",created:"YAZDANin ❤️ tekemä",published:"Julkaisupäivä"},
+el:{name:"Ελληνικά",dir:"ltr",title:"YAZORA — Τα καθημερινά σας εργαλεία σε ένα μέρος",search:"Αναζήτηση εργαλείων...",popular:"Δημοφιλή",categories:"Κατηγορίες",all:"Όλα",tools:"Εργαλεία",support:"Υποστήριξη Telegram",created:"Φτιαγμένο με ❤️ από τον YAZDAN",published:"Ημερομηνία δημοσίευσης"},
+he:{name:"עברית",dir:"rtl",title:"YAZORA — כל הכלים היומיומיים במקום אחד",search:"חיפוש כלים...",popular:"פופולריים",categories:"קטגוריות",all:"הכול",tools:"כלים",support:"תמיכת Telegram",created:"נוצר עם ❤️ על ידי YAZDAN",published:"תאריך פרסום"},
+cs:{name:"Čeština",dir:"ltr",title:"YAZORA — Vaše každodenní nástroje na jednom místě",search:"Hledat nástroje...",popular:"Oblíbené",categories:"Kategorie",all:"Vše",tools:"Nástroje",support:"Podpora Telegram",created:"Vytvořil YAZDAN s ❤️",published:"Datum vydání"},
+ro:{name:"Română",dir:"ltr",title:"YAZORA — Instrumentele tale zilnice într-un singur loc",search:"Caută instrumente...",popular:"Populare",categories:"Categorii",all:"Toate",tools:"Instrumente",support:"Asistență Telegram",created:"Creat cu ❤️ de YAZDAN",published:"Data publicării"},
+hu:{name:"Magyar",dir:"ltr",title:"YAZORA — Mindennapi eszközök egy helyen",search:"Eszközök keresése...",popular:"Népszerű",categories:"Kategóriák",all:"Összes",tools:"Eszközök",support:"Telegram-támogatás",created:"❤️-vel készítette YAZDAN",published:"Közzététel dátuma"},
+"fa-AF":{name:"دری",dir:"rtl",title:"YAZORA — ابزارهای روزمره شما در یک‌جا",search:"جستجوی ابزار...",popular:"محبوب",categories:"دسته‌بندی‌ها",all:"همه",tools:"ابزارها",support:"پشتیبانی تلگرام",created:"ساخته‌شده با ❤️ توسط YAZDAN",published:"تاریخ نشر"},
+az:{name:"Azərbaycan",dir:"ltr",title:"YAZORA — Gündəlik alətləriniz bir yerdə",search:"Alətləri axtar...",popular:"Populyar",categories:"Kateqoriyalar",all:"Hamısı",tools:"Alətlər",support:"Telegram dəstəyi",created:"YAZDAN tərəfindən ❤️ ilə hazırlandı",published:"Yayım tarixi"}
+};
+
+function applyYazoraLanguage(lang){
+  const t=YAZORA_LANGS[lang]||YAZORA_LANGS.fa;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=t.dir;
+  document.title=t.title;
+  const s=document.getElementById("searchInput");
+  if(s) s.placeholder=t.search;
+  const byId=(id)=>document.getElementById(id);
+  // Update common headings when their IDs/classes are available.
+  const candidates=[
+    ["popularTitle",t.popular],["categoriesTitle",t.categories],["toolsTitle",t.tools]
+  ];
+  candidates.forEach(([id,v])=>{const e=byId(id);if(e)e.textContent=v});
+  document.querySelectorAll("[data-i18n]").forEach(e=>{
+    const key=e.getAttribute("data-i18n");
+    if(t[key]) e.textContent=t[key];
+  });
+  localStorage.setItem("yazora-language",lang);
+}
+(function(){
+  const sel=document.getElementById("languageSelect");
+  if(!sel)return;
+  const saved=localStorage.getItem("yazora-language")||"fa";
+  sel.value=saved;
+  sel.addEventListener("change",e=>applyYazoraLanguage(e.target.value));
+  applyYazoraLanguage(saved);
+})();
+</script>
+
+<script id="yazora-premium-js">
+(function(){
+  // Human-like micro-interactions: keyboard shortcut, toast, staggered cards.
+  const toast = document.getElementById('yazoraToast');
+  function showToast(msg){
+    if(!toast)return;
+    toast.textContent=msg; toast.classList.add('show');
+    clearTimeout(window.__yToast);
+    window.__yToast=setTimeout(()=>toast.classList.remove('show'),1800);
+  }
+  window.YAZORAToast=showToast;
+
+  const cmd=document.getElementById('yazoraCommand');
+  const inp=document.getElementById('yCommandInput');
+  function openCmd(){if(cmd){cmd.classList.add('open');cmd.setAttribute('aria-hidden','false');setTimeout(()=>inp&&inp.focus(),50)}}
+  function closeCmd(){if(cmd){cmd.classList.remove('open');cmd.setAttribute('aria-hidden','true')}}
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCmd()}
+    if(e.key==='Escape')closeCmd();
+    if(e.key==='Enter' && document.activeElement===inp){
+      const q=(inp.value||'').trim();
+      closeCmd();
+      if(q){
+        const mainSearch=document.getElementById('searchInput');
+        if(mainSearch){mainSearch.value=q;mainSearch.dispatchEvent(new Event('input',{bubbles:true}));mainSearch.focus()}
+        showToast('جستجو انجام شد');
+      }
+    }
+  });
+  if(cmd)cmd.addEventListener('click',e=>{if(e.target===cmd)closeCmd()});
+
+  // Reveal/stagger visible cards after initial render.
+  function enhance(){
+    document.querySelectorAll('.tool-card,.card').forEach((el,i)=>{
+      if(!el.dataset.yEnhanced){
+        el.dataset.yEnhanced='1';
+        el.style.animationDelay=Math.min(i*18,360)+'ms';
+        el.classList.add('yazora-reveal');
+      }
+    });
+  }
+  setTimeout(enhance,250);
+  const mo=new MutationObserver(()=>enhance());
+  mo.observe(document.body,{childList:true,subtree:true});
+
+  // Small welcome toast once per browser.
+  if(!localStorage.getItem('yazora-welcomed')){
+    setTimeout(()=>showToast('✨ به YAZORA خوش اومدی'),900);
+    localStorage.setItem('yazora-welcomed','1');
+  }
+})();
+</script>
+
+<script id="yazora-universal-engine">
+(function(){
+ const $=id=>document.getElementById(id);
+ const escapeHTML=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+ const fmt=n=>Number.isFinite(n)?String(Math.round(n*1e10)/1e10):String(n);
+ const templates={
+  calc:{title:"ماشین حساب",html:`<input id="ytIn" class="y-tool-input" inputmode="decimal" placeholder="مثلاً 12×8+5"><div id="ytRes" class="y-result">نتیجه اینجا نمایش داده می‌شود</div><div class="y-kbd">${["7","8","9","÷","4","5","6","×","1","2","3","−","0",".","⌫","+","("," )","%","="].map((x,i)=>`<button class="${x==='='?'accent':''}" data-k="${escapeHTML(x)}">${x}</button>`).join("")}</div>`},
+  percent:{title:"درصد",html:`<input id="ytA" class="y-tool-input" inputmode="decimal" placeholder="عدد"><input id="ytB" class="y-tool-input" style="margin-top:8px" inputmode="decimal" placeholder="درصد"><div id="ytRes" class="y-result"></div>`},
+  bmi:{title:"BMI",html:`<input id="ytA" class="y-tool-input" inputmode="decimal" placeholder="وزن (kg)"><input id="ytB" class="y-tool-input" style="margin-top:8px" inputmode="decimal" placeholder="قد (cm)"><div id="ytRes" class="y-result"></div>`},
+  text:{title:"ابزار متن",html:`<textarea id="ytText" class="y-tool-input" style="min-height:120px" placeholder="متن خود را وارد کنید..."></textarea><div class="y-tool-actions"><button data-act="upper">حروف بزرگ</button><button data-act="lower">حروف کوچک</button><button data-act="reverse">برعکس</button><button data-act="copy">کپی</button></div><div id="ytRes" class="y-result"></div>`},
+  random:{title:"انتخاب تصادفی",html:`<textarea id="ytText" class="y-tool-input" style="min-height:110px" placeholder="هر گزینه در یک خط"></textarea><div class="y-tool-actions"><button data-act="random">انتخاب کن 🎲</button></div><div id="ytRes" class="y-result"></div>`},
+  password:{title:"رمز تصادفی",html:`<div class="y-tool-actions"><button data-act="password">ساخت رمز قوی 🔐</button></div><div id="ytRes" class="y-result"></div>`},
+  dice:{title:"تاس",html:`<div class="y-tool-actions"><button data-act="dice">انداختن تاس 🎲</button></div><div id="ytRes" class="y-result"></div>`},
+  coin:{title:"شیر یا خط",html:`<div class="y-tool-actions"><button data-act="coin">پرتاب سکه 🪙</button></div><div id="ytRes" class="y-result"></div>`},
+  uuid:{title:"UUID",html:`<div class="y-tool-actions"><button data-act="uuid">ساخت UUID</button></div><div id="ytRes" class="y-result"></div>`},
+  base64:{title:"Base64",html:`<input id="ytText" class="y-tool-input" placeholder="متن"><div class="y-tool-actions"><button data-act="b64e">Encode</button><button data-act="b64d">Decode</button></div><div id="ytRes" class="y-result"></div>`}
+ };
+ function keyboard(){
+  const input=$("ytIn"),res=$("ytRes"); if(!input)return;
+  document.querySelectorAll(".y-kbd button").forEach(b=>b.onclick=()=>{
+   const k=b.dataset.k;
+   if(k==="⌫") input.value=input.value.slice(0,-1);
+   else if(k==="=") calculate(input.value);
+   else input.value+=k.replace("×","*").replace("÷","/").replace("−","-");
+  });
+  function calculate(v){
+   try{
+    if(!/^[0-9+*/%().\\-\\s]+$/.test(v)) throw 0;
+    const x=Function('"use strict";return ('+v+')')();
+    res.textContent="= "+fmt(Number(x));
+   }catch{res.textContent="عبارت نامعتبر است";}
+  }
+  input.addEventListener("input",()=>{if(input.value)calculate(input.value)});
+ }
+ function mount(kind){
+  const box=document.querySelector(".modal-content,.sheet-content,.modal-body,[role=dialog]");
+  if(!box)return;
+  const t=templates[kind]||templates.text;
+  box.querySelector(".y-universal")?.remove();
+  const el=document.createElement("div");el.className="y-universal";el.innerHTML=`<h3>${t.title}</h3>${t.html}`;
+  box.appendChild(el);
+  keyboard();
+  el.addEventListener("click",e=>{
+   const a=e.target.closest("[data-act]");if(!a)return;
+   const act=a.dataset.act,res=$("ytRes"),txt=$("ytText")?.value||"";
+   if(act==="upper")res.textContent=txt.toUpperCase();
+   if(act==="lower")res.textContent=txt.toLowerCase();
+   if(act==="reverse")res.textContent=[...txt].reverse().join("");
+   if(act==="copy")navigator.clipboard?.writeText(txt);
+   if(act==="random"){const arr=txt.split(/\n+/).map(x=>x.trim()).filter(Boolean);res.textContent=arr.length?arr[Math.floor(Math.random()*arr.length)]:"گزینه‌ای وارد نشده";}
+   if(act==="password"){const c="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%";let r="";for(let i=0;i<16;i++)r+=c[Math.floor(Math.random()*c.length)];res.textContent=r}
+   if(act==="dice")res.textContent="🎲 "+(Math.floor(Math.random()*6)+1);
+   if(act==="coin")res.textContent=Math.random()<.5?"شیر":"خط";
+   if(act==="uuid")res.textContent=crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(16).slice(2);
+   if(act==="b64e")try{res.textContent=btoa(unescape(encodeURIComponent(txt)))}catch{res.textContent="خطا"};
+   if(act==="b64d")try{res.textContent=decodeURIComponent(escape(atob(txt)))}catch{res.textContent="Base64 نامعتبر است"};
+  });
+  const a=$("ytA"),b=$("ytB"),r=$("ytRes");
+  if(kind==="percent"&&a&&b){const f=()=>{let x=+a.value,y=+b.value;r.textContent=(x&&y)?fmt(x*y/100):""};a.oninput=f;b.oninput=f}
+  if(kind==="bmi"&&a&&b){const f=()=>{let w=+a.value,h=+b.value/100;r.textContent=(w&&h)?fmt(w/(h*h)):""};a.oninput=f;b.oninput=f}
+ }
+ window.YAZORAMountTool=mount;
+ // Hook into common modal-opening patterns used by the existing app.
+ const originalOpen=window.openTool;
+ if(typeof originalOpen==="function"){
+  window.openTool=function(tool){
+   const out=originalOpen.apply(this,arguments);
+   setTimeout(()=>mount(tool?.type||tool?.id||"text"),30); return out;
+  };
+ }
+})();
+</script>
+</body></html>

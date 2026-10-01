@@ -1,0 +1,9 @@
+{
+  "name": "YAZORA",
+  "short_name": "YAZORA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070a13",
+  "theme_color": "#7c5cff",
+  "description": "YAZORA — 100 ابزار کاربردی"
+}
